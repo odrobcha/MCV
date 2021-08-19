@@ -28,7 +28,7 @@ switch ($page) {
         (new ArticleController())->index();
         break;
     case 'article' :
-        (new ArticleController())->show($_GET['id']);
+        (new ArticleController())->show((int)$_GET['id']);
         break;
     case 'home':
     default:

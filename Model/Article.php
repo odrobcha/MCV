@@ -3,10 +3,10 @@ require_once 'Model/DatabaseManager.php';
 
 class Article extends DatabaseManager
 {
-    public string $title;
+    public ?string $title;
     public ?string $description;
     public ?string $publish_date;
-    public $id;
+    public string $author;
 
     /*
      * all() can be called without creating new instance - thus  using static function is reasonable
@@ -32,8 +32,26 @@ class Article extends DatabaseManager
     public function getArticle($id)
     {
         $instance = new Article();
-        $sql = "SELECT title, description, publish_date FROM `articles` WHERE `id`=" .$id;
-        return $instance->connect()->query($sql)->fetchAll();
+        $sql = "SELECT title, description, publish_date, author FROM `articles` WHERE `id`=" .$id;
+
+        $article = $instance->connect()->query($sql)->fetchAll();
+
+        $this->title = $article[0]['title'];
+        $this->description = $article[0]['description'];
+        $this->publish_date = $article[0]['publish_date'];
+        $this->author = $article[0]['author'];
+
+        return $article;
+    }
+
+    public function description()
+    {
+        return $this->description;
+    }
+
+    public function header()
+    {
+        return $this->title .' - By ' .$this->author ;
     }
 
     /**

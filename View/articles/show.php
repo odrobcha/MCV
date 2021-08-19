@@ -3,13 +3,14 @@
 <div>
     <p><a href="/index.php/?page=articles">All articles</a></p>
     <h2>
-        <?php echo  $article[0]['title']?>
+        <?php echo  $header ?>
     </h2>
     <h3>
-        <?php echo  $article[0]['publish_date']?>
+        <?php echo $publishDate ?>
     </h3>
+
     <h4>
-        <?php echo  $article[0]['description']?>
+        <?php echo  $description?>
     </h4>
 
 </div>

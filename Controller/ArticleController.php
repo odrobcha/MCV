@@ -12,9 +12,15 @@ class ArticleController
         require 'View/articles/index.php';
     }
 
-    public function show($id)
+    public function show(int $id)
     {
-        $article = (new Article())->getArticle($id);
+        $requiredArticle = new Article();
+        $requiredArticle->getArticle($id);
+
+        $description = $requiredArticle->description();
+        $header = $requiredArticle->header();
+        $publishDate = $requiredArticle->publishDate();
+
         require 'View/articles/show.php';
     }
 }
