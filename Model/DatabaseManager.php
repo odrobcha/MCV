@@ -1,13 +1,12 @@
 <?php
-
 // This class will manage the connection to the database
 // It will be passed on the other classes who need it
-class DatabaseManager
+abstract class DatabaseManager
 {
     // These are private: only this class needs them
      // This one is public, so we can use it outside of this class
     // We could also use a private variable and a getter (but let's not make things too complicated at this point)
-    public $connection;
+    public PDO $connection;
 
     protected function connect(): PDO
     {
@@ -24,7 +23,7 @@ class DatabaseManager
 
         $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); //to set the default mode of returning data (ASSOC - Associative array)
 
-       $this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);          //Note that when using PDO to access a MySQL database real prepared statements are not used by default.
+        $this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);          //Note that when using PDO to access a MySQL database real prepared statements are not used by default.
         $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);   //To fix this you have to disable the emulation of prepared statements. An example of creating a connection using PDO is:
 
         return $this->connection; // to return connection with r=the DB

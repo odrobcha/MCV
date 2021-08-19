@@ -20,6 +20,7 @@ $page = $_GET['page'] ?? null;
 
 // Load the controller
 // It will *control* the rest of the work to load the page
+
 switch ($page) {
     case 'articles':
         // This is shorthand for:

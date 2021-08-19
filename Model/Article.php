@@ -8,7 +8,7 @@ class Article extends DatabaseManager
     public ?string $publish_date;
     public string $author;
 
-    public static function all()
+    public static function all() :array
     {
         $instance = new Article();
         $sql = "SELECT * FROM articles";
@@ -26,7 +26,8 @@ class Article extends DatabaseManager
 
         return $collection;
     }
-    public function getArticle($id)
+
+    public function getArticle($id) :array
     {
         $instance = new Article();
         $sql = "SELECT title, description, publish_date, author FROM `articles` WHERE `id`=" .$id;
@@ -41,12 +42,12 @@ class Article extends DatabaseManager
         return $article;
     }
 
-    public function description()
+    public function description() :string
     {
         return $this->description;
     }
 
-    public function header()
+    public function header() :string
     {
         return $this->title .' - By ' .$this->author ;
     }
@@ -54,10 +55,9 @@ class Article extends DatabaseManager
     /**
      * @throws Exception
      */
-    public function publishDate(){
+    public function publishDate() :string
+    {
         $date = new DateTime($this->publish_date);
         return $date->format('F d, Y H:i');
     }
-
-
 }

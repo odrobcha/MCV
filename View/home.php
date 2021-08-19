@@ -23,7 +23,6 @@
 
         <p>Some nice text here. Some nice text here.Some nice text here.Some nice text here.Some nice text here.Some nice text here.</p>
 
-
     </section>
 
 <?php require 'View/includes/footer.php'?>

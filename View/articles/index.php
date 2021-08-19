@@ -8,8 +8,6 @@
             Amazing description of all articles. Amazing description of all articles.Amazing description of all articles.Amazing description of all articles.Amazing description of all articles.Amazing description of all articles.
         </h3>
 
-
-
         <ul>
             <?php foreach ($articles as $article) : ?>
                <li>
