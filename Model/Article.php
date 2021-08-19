@@ -8,9 +8,6 @@ class Article extends DatabaseManager
     public ?string $publish_date;
     public string $author;
 
-    /*
-     * all() can be called without creating new instance - thus  using static function is reasonable
-     */
     public static function all()
     {
         $instance = new Article();

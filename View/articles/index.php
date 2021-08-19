@@ -1,7 +1,14 @@
 <?php require 'View/includes/header.php'?>
 
     <section>
-        <p><a href="index.php">To home</a></p>
+        <a href="index.php">To home</a>
+
+        <h3>
+            Amazing description of all articles. Amazing description of all articles.Amazing description of all articles.Amazing description of all articles.Amazing description of all articles.Amazing description of all articles.
+            Amazing description of all articles. Amazing description of all articles.Amazing description of all articles.Amazing description of all articles.Amazing description of all articles.Amazing description of all articles.
+        </h3>
+
+
 
         <ul>
             <?php foreach ($articles as $article) : ?>
@@ -14,5 +21,6 @@
             <?php endforeach; ?>
         </ul>
     </section>
+<br>
 
 <?php require 'View/includes/footer.php'?>
