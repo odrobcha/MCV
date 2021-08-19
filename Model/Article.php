@@ -15,7 +15,6 @@ class Article extends DatabaseManager
     {
         $instance = new Article();
         $sql = "SELECT * FROM articles";
-
         $rows = $instance->connect()->query($sql)->fetchAll();
 
         $collection = [];
@@ -30,6 +29,12 @@ class Article extends DatabaseManager
 
         return $collection;
     }
+    public function getArticle($id)
+    {
+        $instance = new Article();
+        $sql = "SELECT title, description, publish_date FROM `articles` WHERE `id`=" .$id;
+        return $instance->connect()->query($sql)->fetchAll();
+    }
 
     /**
      * @throws Exception
@@ -38,4 +43,6 @@ class Article extends DatabaseManager
         $date = new DateTime($this->publish_date);
         return $date->format('F d, Y H:i');
     }
+
+
 }

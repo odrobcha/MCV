@@ -12,12 +12,9 @@ class ArticleController
         require 'View/articles/index.php';
     }
 
-    // Note: this function can also be used in a repository - the choice is yours
-
-
     public function show($id)
     {
-        // TODO: this can be used for a detail page
+        $article = (new Article())->getArticle($id);
         require 'View/articles/show.php';
     }
 }
