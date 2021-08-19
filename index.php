@@ -12,9 +12,11 @@ require 'Model/Article.php';
 require 'Controller/HomepageController.php';
 require 'Controller/ArticleController.php';
 
+
 // Get the current page to load
 // If nothing is specified, it will remain empty (home should be loaded)
 $page = $_GET['page'] ?? null;
+
 
 // Load the controller
 // It will *control* the rest of the work to load the page
@@ -24,6 +26,9 @@ switch ($page) {
         // $articleController = new ArticleController;
         // $articleController->index();
         (new ArticleController())->index();
+        break;
+    case 'article' :
+        (new ArticleController())->show($_GET['id']);
         break;
     case 'home':
     default:

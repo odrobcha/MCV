@@ -1,22 +1,41 @@
 <?php
+require_once 'Model/DatabaseManager.php';
 
-declare(strict_types=1);
-
-class Article
+class Article extends DatabaseManager
 {
     public string $title;
     public ?string $description;
-    public ?string $publishDate;
+    public ?string $publish_date;
+    public $id;
 
-    public function __construct(string $title, ?string $description, ?string $publishDate)
+    /*
+     * all() can be called without creating new instance - thus  using static function is reasonable
+     */
+    public static function all()
     {
-        $this->title = $title;
-        $this->description = $description;
-        $this->publishDate = $publishDate;
+        $instance = new Article();
+        $sql = "SELECT * FROM articles";
+
+        $rows = $instance->connect()->query($sql)->fetchAll();
+
+        $collection = [];
+
+        foreach ($rows as $row){
+            $article = new Article();
+            foreach ($row as $key=>$value) {
+                $article->{$key} = $value;
+            }
+            $collection[] = $article;
+        }
+
+        return $collection;
     }
 
-    public function formatPublishDate($format = 'DD-MM-YYYY')
-    {
-        // TODO: return the date in the required format
+    /**
+     * @throws Exception
+     */
+    public function publishDate(){
+        $date = new DateTime($this->publish_date);
+        return $date->format('F d, Y H:i');
     }
 }
