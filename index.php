@@ -8,9 +8,11 @@ error_reporting(E_ALL);
 
 //include all your model files here
 require 'Model/Article.php';
+require 'Model/Author.php';
 //include all your controllers here
 require 'Controller/HomepageController.php';
 require 'Controller/ArticleController.php';
+require 'Controller/AuthorController.php';
 
 
 // Get the current page to load
@@ -22,6 +24,9 @@ $page = $_GET['page'] ?? null;
 // It will *control* the rest of the work to load the page
 
 switch ($page) {
+    case 'author' :
+        (new AuthorController())->index();
+        break;
     case 'articles':
         // This is shorthand for:
         // $articleController = new ArticleController;

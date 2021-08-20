@@ -24,8 +24,9 @@ abstract class DatabaseManager
         $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); //to set the default mode of returning data (ASSOC - Associative array)
 
         $this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);          //Note that when using PDO to access a MySQL database real prepared statements are not used by default.
-        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);   //To fix this you have to disable the emulation of prepared statements. An example of creating a connection using PDO is:
+                                                                                                    //To fix this you have to disable the emulation of prepared statements. An example of creating a connection using PDO is:
+        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  //developer tool is not necessary
 
-        return $this->connection; // to return connection with r=the DB
+        return $this->connection; // to return connection
     }
 }
